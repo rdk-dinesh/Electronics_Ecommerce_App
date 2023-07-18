@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useHistory } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import './SignUp.css'
 import {  useMutation, useQuery } from '@apollo/client'
 import { create_user } from '../../graphql/mutations/graphql.mutations'
@@ -12,7 +12,7 @@ function SignUp() {
   const [isSubmit, setisSubmit] = useState(false);  
   const { data } = useQuery(usersDATA);
   const [Create] = useMutation(create_user,{refetchQueries:[{query:usersDATA}]});
-  const navigate = useHistory();
+  const navigate = useNavigate();
   const handlechange = (e) => {
     const { name, value } = e.target;
     setFormValues({ ...FormValues, [name]: value.trim() });
@@ -35,7 +35,7 @@ function SignUp() {
         }
       })
       alert("you succesfully Registered!");
-      navigate.push('/signin');
+      navigate('/signin');
       setisSubmit(false);
     }
   },[FormErrors]);
