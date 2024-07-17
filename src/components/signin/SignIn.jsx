@@ -1,13 +1,13 @@
 import React,{useState} from 'react'
 import './SignIn.css'
-import { Link, useHistory } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useQuery } from "@apollo/client";
 import { usersDATA } from '../../graphql/queries/graphql.queries';
 function SignIn(props) {
   const InitialValues={username:"",password:""};
   const [errors,setErrors]=useState("");
   const [Data,setData]=useState(InitialValues);
-  const State=useHistory();  
+  const navigate=useNavigate();  
   const handlechange=(e)=>{
     const {name,value}=e.target;
     setData({...Data,[name]:value.trim()});
@@ -23,7 +23,7 @@ function SignIn(props) {
       props.changestate(false);
       localStorage.setItem('users',JSON.stringify(data.users[index]));
       setErrors("");
-      State.push('/');
+      navigate('/');
     } else {
       setErrors("Invalid username or password!");
     }

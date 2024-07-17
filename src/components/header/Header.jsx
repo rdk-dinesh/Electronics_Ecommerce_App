@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import './Header.css'
-import { Link } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 import CartIcon from './cart_icon/CartIcon'
 import Search from './search/Search'
 function Header(props) {
@@ -9,6 +9,7 @@ function Header(props) {
     props.change(true);
   }
   return ( 
+    <>
     <div className='header'>
       <div className='header_elements'>
           <p className='header_title'>Electro<span className='header_span'> store </span></p>
@@ -34,8 +35,8 @@ function Header(props) {
         <Search className="header_search mobile"/>
       </div> 
     </div>
-    
-    
+    <Outlet/>
+    </>
   )
 }
 

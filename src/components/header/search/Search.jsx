@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link,useHistory } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import {useMutation} from '@apollo/client'
 import { getData } from '../../../graphql/mutations/graphql.mutations';
 import { SearchedData } from '../../../graphql/queries/graphql.queries';
@@ -13,11 +13,11 @@ const onChangeHandler=(e)=>{
     }
     })
 }
-const navigate=useHistory();
+const navigate=useNavigate();
 return (
     <div>
        <div className={className}>
-          <input className='header_search_box' type='text' placeholder='Search here' onChange={onChangeHandler} onClick={()=>navigate.push('/search')}></input>
+          <input className='header_search_box' type='text' placeholder='Search here' onChange={onChangeHandler} onClick={()=>navigate('/search')}></input>
           <Link to='/search' className='header_search_button'>
             <i class="fa-solid fa-magnifying-glass"></i>
           </Link>
