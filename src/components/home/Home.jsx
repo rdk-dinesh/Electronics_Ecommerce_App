@@ -9,6 +9,7 @@ import headset from '../../Images/img6.png'
 function Home() {
   const[Active,setActive]=useState(1);
   return (
+    <>
     <div className='home'>
         <Banner/>
         <div className='cards_container'>
@@ -30,6 +31,7 @@ function Home() {
         </div>
         <Products/>
     </div>
+    </>
   ) 
 }
 export default Home

@@ -2,9 +2,9 @@ import React from 'react'
 import { useMutation } from '@apollo/client'
 import { CART_ITEMS } from '../../../graphql/queries/graphql.queries';
 import { addToCart } from '../../../graphql/mutations/graphql.mutations';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 function CartButton({ infoToAdd, count, states }) {
-    const history=useHistory();
+    const navigate=useNavigate();
     const [addItemToCart] = useMutation(addToCart, { refetchQueries: [{ query: CART_ITEMS }] });
     const { id, title, image, price } = infoToAdd;
     const id1 = parseInt(id);
@@ -27,7 +27,7 @@ function CartButton({ infoToAdd, count, states }) {
             }
         }
         else{
-           history.push("/signin") 
+           navigate("/signin") 
         }
     }
 
